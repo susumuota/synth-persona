@@ -34,6 +34,8 @@ Documentation = "https://github.com/susumuota/synth-persona"
 Repository = "https://github.com/susumuota/synth-persona.git"
 Issues = "https://github.com/susumuota/synth-persona/issues"
 
+[tool.hatch.version]
+path = "src/synth_persona/__init__.py"
 
 [tool.ruff]
 # Same as Black.
