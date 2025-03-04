@@ -1,0 +1,11 @@
+# script arguments
+dataset_name: argilla/FinePersonas-v0.1
+logging_level: DEBUG
+cache_dir: .cache
+topic: math
+
+# model config
+model_name_or_path: rinna/deepseek-r1-distill-qwen2.5-bakeneko-32b
+model_revision: main
+# torch_dtype: bfloat16
+# attn_implementation: flash_attention_2

@@ -12,5 +12,8 @@ wheels/
 # ruff
 .ruff_cache/
 
-# VS Code
+# VSCode
 .vscode/
+
+# Huffing Face cache_dir
+.cache/
