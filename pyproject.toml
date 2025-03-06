@@ -26,6 +26,8 @@ dependencies = [
     "accelerate>=1.4.0",
     "datasets>=3.3.2",
     "deepspeed>=0.16.4",
+    "litellm>=1.62.1",
+    "setuptools>=75.8.2",
     "transformers>=4.49.0",
     "trl>=0.15.2",
     "vllm>=0.7.3",
@@ -88,3 +90,8 @@ docstring-code-format = false
 # This only has an effect when the `docstring-code-format` setting is
 # enabled.
 docstring-code-line-length = "dynamic"
+
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.3.5",
+]
