@@ -1,4 +1,3 @@
-# Python-generated files
 __pycache__/
 *.py[oc]
 build/
@@ -6,14 +5,8 @@ dist/
 wheels/
 *.egg-info
 
-# Virtual environments
-.venv
-
-# ruff
-.ruff_cache/
-
-# VSCode
-.vscode/
-
-# Huffing Face cache_dir
 .cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+.vscode/
