@@ -10,3 +10,5 @@ wheels/
 .ruff_cache/
 .venv/
 .vscode/
+
+misc/
