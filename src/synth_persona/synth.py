@@ -34,7 +34,10 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class PersonaScriptArguments(ScriptArguments):
+    # logging
     logging_level: str = "INFO"
+
+    # dataset
     dataset_batch_size: int = 64
     dataset_start: int = 0
     dataset_end: int = -1
@@ -42,11 +45,13 @@ class PersonaScriptArguments(ScriptArguments):
     cache_dir: str = ".cache"
     output_jsonl: str = "output.jsonl"
 
+    # inference
     max_tokens: int = 4096
     seed: int = 42
     temperature: float = 0.6
     top_p: float = 0.95
 
+    # prompt
     task: str = "math problem"
     difficulty: str = "short, easy and involve basic mathematical skills and knowledge"
     target: str = "Any average grade school student"
@@ -54,6 +59,9 @@ class PersonaScriptArguments(ScriptArguments):
     problem_additional_note: str = "4. 深い専門知識が必要な問題を避け、平均的な知識と常識の範囲内で解ける問題にしてください。\n5. 簡潔に日本語で回答してください。"
     solution_start_with: str = "解答"
     solution_additional_note: str = "4. 簡潔に日本語で回答してください。"
+
+    # model config
+    use_api: bool = False
 
 
 class LanguageModel(ABC):
@@ -131,7 +139,7 @@ Note:
 3. Your response should always start with "{start_with}:". Your response should not include a solution to the created {task}.
 {additional_note}
 """
-    a_an = "an" if task[0].lower() in "aeiou" else "a"
+    a_an = "an" if task[0].lower() in "aeiou" else "a"  # cspell:disable-line
     content = template.format(
         persona=persona,
         task=task,
@@ -197,7 +205,7 @@ def generate_problems_solutions(
     indices: list[int],
     ids: list[str],
     personas: list[str],
-    labelss: list[str],
+    labelss: list[str],  # cspell:disable-line
     seed: int,
     task: str,
     difficulty: str,
@@ -241,7 +249,7 @@ def generate_problems_solutions(
             indices,
             ids,
             personas,
-            labelss,
+            labelss,  # cspell:disable-line
             problems,
             solutions,
         )
@@ -277,17 +285,17 @@ def run_generate_problems_solutions(
             indices = list(range(batch_start, batch_end))
             ids = batch["id"]
             personas = batch["persona"]
-            labelss = batch["labels"]
+            labelss = batch["labels"]  # cspell:disable-line
             logger.debug(
                 f"load data: seed: {seed}: batch: {batch_start}-{batch_end}: ({(time() - time_start):.4f} sec)"
             )
             time_start = time()
-            problems = generate_problems_solutions(
+            problems_solutions = generate_problems_solutions(
                 llm,
                 indices,
                 ids,
                 personas,
-                labelss,
+                labelss,  # cspell:disable-line
                 seed,
                 task,
                 difficulty,
@@ -297,12 +305,12 @@ def run_generate_problems_solutions(
                 solution_start_with,
                 solution_additional_note,
             )
-            logger.debug(f"generate_problems: ({(time() - time_start):.4f} sec)")
+            logger.debug(f"generate_problems_solutions: ({(time() - time_start):.4f} sec)")
             time_start = time()
-            for problem in problems:
-                f.write(json.dumps(problem, ensure_ascii=False) + "\n")
+            for problem_solution in problems_solutions:
+                f.write(json.dumps(problem_solution, ensure_ascii=False) + "\n")
                 f.flush()
-            logger.debug(f"json dumps: {batch_start}-{batch_end} ({(time() - time_start):.4f} sec)")
+            logger.debug(f"json dumps: ({(time() - time_start):.4f} sec)")
 
 
 def main(script_args: PersonaScriptArguments, model_args: ModelConfig):
@@ -338,13 +346,22 @@ def main(script_args: PersonaScriptArguments, model_args: ModelConfig):
         logger.debug(f"Shuffling dataset with seed {script_args.seed}...done")
 
     # Load language model
-    llm = VLLMModel(
-        model_args.model_name_or_path,
-        seed=script_args.seed,
-        max_tokens=script_args.max_tokens,
-        temperature=script_args.temperature,
-        top_p=script_args.top_p,
-    )
+    if script_args.use_api:
+        llm = LiteLLMModel(
+            model_args.model_name_or_path,
+            seed=script_args.seed,
+            max_tokens=script_args.max_tokens,
+            temperature=script_args.temperature,
+            top_p=script_args.top_p,
+        )
+    else:
+        llm = VLLMModel(
+            model_args.model_name_or_path,
+            seed=script_args.seed,
+            max_tokens=script_args.max_tokens,
+            temperature=script_args.temperature,
+            top_p=script_args.top_p,
+        )
     logger.debug(f"LLM: {llm}")
 
     # Generate problems

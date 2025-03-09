@@ -5,9 +5,9 @@ logging_level: DEBUG
 dataset_name: argilla/FinePersonas-v0.1
 dataset_config: default
 dataset_split: train
-dataset_batch_size: 64
+dataset_batch_size: 8
 dataset_start: 0
-dataset_end: -1
+dataset_end: 100
 shuffle: false
 cache_dir: .cache
 output_jsonl: outputs/output.jsonl
@@ -28,5 +28,5 @@ solution_start_with: 解答
 solution_additional_note: "4. 簡潔に日本語で回答してください。"
 
 # model config
-model_name_or_path: rinna/deepseek-r1-distill-qwen2.5-bakeneko-32b
-use_api: false
+model_name_or_path: gpt-4o-mini
+use_api: true

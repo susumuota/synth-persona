@@ -10,7 +10,6 @@ dataset_start: 0
 dataset_end: -1
 shuffle: false
 cache_dir: .cache
-# this will override by slurm/synth.slurm
 output_jsonl: outputs/output.jsonl
 
 # inference
@@ -30,3 +29,4 @@ solution_additional_note: "4. 簡潔に日本語で回答してください。"
 
 # model config
 model_name_or_path: Qwen/Qwen2.5-0.5B-Instruct
+use_api: false
