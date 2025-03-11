@@ -93,5 +93,6 @@ docstring-code-line-length = "dynamic"
 
 [dependency-groups]
 dev = [
+    "ipywidgets>=8.1.5",
     "jupyterlab>=4.3.5",
 ]
