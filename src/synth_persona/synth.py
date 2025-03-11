@@ -65,7 +65,7 @@ class PersonaScriptArguments(ScriptArguments):
 
 
 class LanguageModel(ABC):
-    def __init__(self, model: str, max_tokens=512, seed=None, temperature=1.0, top_p=0.95):
+    def __init__(self, model: str, max_tokens=512, seed: int | None = None, temperature=1.0, top_p=0.95) -> None:
         self.model = model
         self.max_tokens = max_tokens
         self.seed = seed
@@ -81,7 +81,7 @@ class LanguageModel(ABC):
 
 
 class LiteLLMModel(LanguageModel):
-    def __init__(self, model: str, max_tokens=512, seed=None, temperature=1.0, top_p=0.95):
+    def __init__(self, model: str, max_tokens=512, seed: int | None = None, temperature=1.0, top_p=0.95) -> None:
         super().__init__(model, max_tokens, seed, temperature, top_p)
 
     def __call__(self, messages_batch: list[list[dict[str, str]]]) -> list[str]:
@@ -101,7 +101,7 @@ class LiteLLMModel(LanguageModel):
 
 
 class VLLMModel(LanguageModel):
-    def __init__(self, model: str, max_tokens=512, seed=None, temperature=1.0, top_p=0.95):
+    def __init__(self, model: str, max_tokens=512, seed: int | None = None, temperature=1.0, top_p=0.95) -> None:
         super().__init__(model, max_tokens, seed, temperature, top_p)
         self.vllm = LLM(model, seed=seed, gpu_memory_utilization=1.0, max_model_len=32 * 1024)  # TODO: parameterize
         self.tokenizer = self.vllm.get_tokenizer()
