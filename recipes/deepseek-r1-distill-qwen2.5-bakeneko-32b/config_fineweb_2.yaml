@@ -1,0 +1,27 @@
+# logging
+logging_level: DEBUG
+
+# dataset
+dataset_name: hotchpotch/fineweb-2-edu-japanese
+dataset_config: small_tokens_cleaned
+dataset_split: train
+dataset_batch_size: 2
+dataset_start: 0
+dataset_end: 8
+shuffle: false
+cache_dir: .cache
+output_jsonl: outputs/output.jsonl
+
+# inference
+max_tokens: 4096
+seed: 3407
+temperature: 0.6
+top_p: 0.95
+
+# prompt
+start_with: ペルソナ
+additional_note: "2. Your response should be one sentence. You should not include any notes or translations.\n3. 簡潔に日本語で回答してください。"
+
+# model config
+model_name_or_path: rinna/deepseek-r1-distill-qwen2.5-bakeneko-32b
+use_api: false

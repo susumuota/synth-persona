@@ -19,12 +19,20 @@ uv sync
 
 ```shell
 sbatch slurm/synth.slurm
+sbatch slurm/synth_api.slurm
+
+sbatch slurm/extract.slurm
+sbatch slurm/extract_api.slurm
 ```
 
 - Without Slurm
 
 ```shell
 CUDA_VISIBLE_DEVICES=0 uv run src/synth_persona/synth.py --config recipes/deepseek-r1-distill-qwen2.5-bakeneko-32b/config_finepersonas.yaml --output-jsonl outputs/output-1.jsonl --seed 1 --shuffle true
+```
+
+```shell
+uv run src/synth_persona/extract.py --config recipes/gpt-4o-mini/config_fineweb_2.yaml --output-jsonl outputs/output-1.jsonl --seed 1 --shuffle true
 ```
 
 ## Check logs
