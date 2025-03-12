@@ -53,7 +53,7 @@ class PersonaScriptArguments(ScriptArguments):
 
     # prompt
     start_with: str = "ペルソナ"
-    additional_note: str = "2. 簡潔に日本語で回答してください。"
+    additional_note: str = "2. Your response should be one sentence. You should not include any notes or translations.\n3. 簡潔に日本語で回答してください。"
 
     # model config
     use_api: bool = False

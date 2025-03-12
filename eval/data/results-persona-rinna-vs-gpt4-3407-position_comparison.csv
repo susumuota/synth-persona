@@ -1,0 +1,9 @@
+count,bias
+"{'A': 69, 'B': 17, 'C': 0, 'bias': 14}","{'first': 8, 'second': 6}"
+"{'A': 64, 'B': 14, 'C': 0, 'bias': 22}","{'first': 11, 'second': 11}"
+"{'A': 65, 'B': 17, 'C': 0, 'bias': 18}","{'first': 7, 'second': 11}"
+"{'A': 67, 'B': 15, 'C': 0, 'bias': 18}","{'first': 11, 'second': 7}"
+"{'A': 71, 'B': 15, 'C': 0, 'bias': 14}","{'first': 12, 'second': 2}"
+"{'A': 70, 'B': 14, 'C': 1, 'bias': 15}","{'first': 9, 'second': 6}"
+"{'A': 70, 'B': 14, 'C': 0, 'bias': 16}","{'first': 11, 'second': 5}"
+"{'A': 68, 'B': 15, 'C': 0, 'bias': 17}","{'first': 9, 'second': 8}"
