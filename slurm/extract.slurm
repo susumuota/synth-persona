@@ -10,6 +10,7 @@ echo "START TIME: $(date)"
 
 module load cuda/12.4
 
-uv run src/synth_persona/extract.py --config recipes/deepseek-r1-distill-qwen2.5-bakeneko-32b/config_fineweb_2.yaml --output-jsonl outputs/output-${SLURM_JOB_ID}.jsonl --seed ${SLURM_JOB_ID} --shuffle true
+# uv run src/synth_persona/extract.py --config recipes/deepseek-r1-distill-qwen2.5-bakeneko-32b/config_fineweb_2.yaml
+uv run src/synth_persona/extract.py --config recipes/deepseek-r1-distill-qwen2.5-bakeneko-32b/config_fineweb_2_en.yaml
 
 echo "END TIME: $(date)"

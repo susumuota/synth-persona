@@ -10,6 +10,6 @@ echo "START TIME: $(date)"
 
 # module load cuda/12.4
 
-uv run src/synth_persona/synth.py --config recipes/gpt-4o-mini/config_finepersonas.yaml --output-jsonl outputs/output-${SLURM_JOB_ID}.jsonl --seed ${SLURM_JOB_ID} --shuffle true
+uv run src/synth_persona/synth.py --config recipes/gpt-4o-mini/config_finepersonas.yaml
 
 echo "END TIME: $(date)"

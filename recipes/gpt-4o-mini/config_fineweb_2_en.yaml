@@ -10,7 +10,7 @@ dataset_start: 0
 dataset_end: 100
 shuffle: true
 cache_dir: .cache
-output_jsonl: outputs/persona-rinna-r1-3407.jsonl
+output_jsonl: outputs/persona-gpt-4o-mini-en-3407.jsonl
 
 # inference
 max_tokens: 4096
@@ -19,9 +19,9 @@ temperature: 0.6
 top_p: 0.95
 
 # prompt
-start_with: ペルソナ
-additional_note: "2. Your response should be one sentence. You should not include any notes or translations.\n3. 簡潔に日本語で回答してください。"
+start_with: Persona
+additional_note: "2. Your response should be one sentence. You should not include any notes or translations.\n3. Please respond in English."
 
 # model config
-model_name_or_path: rinna/deepseek-r1-distill-qwen2.5-bakeneko-32b
-use_api: false
+model_name_or_path: gpt-4o-mini
+use_api: true
