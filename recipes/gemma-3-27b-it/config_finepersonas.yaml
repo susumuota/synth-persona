@@ -1,0 +1,32 @@
+# logging
+logging_level: DEBUG
+
+# dataset
+dataset_name: argilla/FinePersonas-v0.1
+dataset_config: default
+dataset_split: train
+dataset_batch_size: 64
+dataset_start: 0
+dataset_end: 100
+shuffle: false
+cache_dir: .cache
+output_jsonl: outputs/basic-math-gemma-3-3407.jsonl
+
+# inference
+max_tokens: 4096
+seed: 3407
+temperature: 0.6
+top_p: 0.95
+
+# prompt
+task: math problem
+difficulty: short, easy and involve basic mathematical skills and knowledge
+target: Any average grade school student
+problem_start_with: 問題
+problem_additional_note: "4. 深い専門知識が必要な問題を避け、平均的な知識と常識の範囲内で解ける問題にしてください。\n5. 簡潔に日本語で回答してください。"
+solution_start_with: 解答
+solution_additional_note: "4. 簡潔に日本語で回答してください。"
+
+# model config
+model_name_or_path: google/gemma-3-27b-it
+use_api: false

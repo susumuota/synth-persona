@@ -1,0 +1,27 @@
+# logging
+logging_level: DEBUG
+
+# dataset
+dataset_name: hotchpotch/fineweb-2-edu-japanese
+dataset_config: small_tokens_cleaned
+dataset_split: train
+dataset_batch_size: 8
+dataset_start: 0
+dataset_end: 100
+shuffle: true
+cache_dir: .cache
+output_jsonl: outputs/persona-gemma-3-3407.jsonl
+
+# inference
+max_tokens: 4096
+seed: 3407
+temperature: 0.6
+top_p: 0.95
+
+# prompt
+start_with: ペルソナ
+additional_note: "2. Your response should be one sentence. You should not include any notes or translations.\n3. 簡潔に日本語で回答してください。"
+
+# model config
+model_name_or_path: google/gemma-3-27b-it
+use_api: false
